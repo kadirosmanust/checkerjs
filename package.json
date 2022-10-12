@@ -1,7 +1,7 @@
 {
   "name": "checkerjs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lightweight and easy to use data validation library for Node.js and the browser.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -11,8 +11,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Kadir Osman Ust (https://github.com/KadoRaw)",
+  "license": "MIT",
+  "repository": "kadoraw/checkerjs",
+  "homepage": "https://github.com/KadoRaw/checkerjs",
   "dependencies": {
     "typescript": "^4.8.4"
   }
