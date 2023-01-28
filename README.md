@@ -1,4 +1,4 @@
-# checkerjs [![NPM version](https://img.shields.io/npm/v/checkerjs.svg?style=flat)](https://www.npmjs.com/package/is-odd) [![NPM monthly downloads](https://img.shields.io/npm/dm/checkerjs.svg?style=flat)](https://npmjs.org/package/is-odd) [![NPM total downloads](https://img.shields.io/npm/dt/checkerjs.svg?style=flat)](https://npmjs.org/package/is-odd) [
+# checkerjs [![NPM version](https://img.shields.io/npm/v/checkerjs.svg?style=flat)](https://www.npmjs.com/package/checkerjs) [![NPM monthly downloads](https://img.shields.io/npm/dm/checkerjs.svg?style=flat)](https://www.npmjs.com/package/checkerjs) [![NPM total downloads](https://img.shields.io/npm/dt/checkerjs.svg?style=flat)](https://www.npmjs.com/package/checkerjs)
 
 > Check your data and validate your projects. Lightweight and easy to use data validation library for Node.js and the browser.
 
