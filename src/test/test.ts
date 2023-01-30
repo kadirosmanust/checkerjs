@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use strict";
 import assert = require("assert");
-import { isArray, isAnyNullorUndefined, isInRange, deepEquality, isOdd, isAnyFrozen } from "../index";
+import { isArray, isAnyNullorUndefined, isInRange, deepEquality, isOdd, isAnyFrozen, howManyCharAtStr } from "../index";
 
 describe("Array", function () {
   describe("#isAnyNullOrUndefined()", function () {
@@ -102,7 +102,7 @@ describe("Number", function () {
 });
 
 describe("Object", function () {
-  describe("#isAnyKeyHasFreez()", function () {
+  describe("#isAnyFrozen()", function () {
     it("should return false when there is no freez", function () {
       const mockedObject = {
         a: 1,
@@ -132,6 +132,49 @@ describe("Object", function () {
       };
 
       assert.equal(isAnyFrozen(mockedObject), true);
+    });
+  });
+});
+
+describe("String", function () {
+  describe("#howManyCharAtStr()", function () {
+    it("should return 0 when empty string comes", function () {
+      const mockedString = "";
+      assert.equal(howManyCharAtStr(mockedString), 0);
+    });
+
+    it("should return 1 when one character comes", function () {
+      const mockedString = "a";
+      assert.equal(howManyCharAtStr(mockedString), 1);
+    });
+
+    it("should return 2 when two character comes", function () {
+      const mockedString = "ab";
+      assert.equal(howManyCharAtStr(mockedString), 2);
+    });
+
+    it("should return count of chars when add options", function () {
+      const mockedString = "abccds";
+      const mockedResult = {
+        count: 6,
+        charCounts: {
+          a: 1,
+          b: 1,
+          c: 2,
+          d: 1,
+          s: 1,
+        },
+      };
+      const testResult = howManyCharAtStr(mockedString, {
+        seperate: true,
+      });
+      assert.deepEqual(mockedResult, testResult);
+    });
+
+    it("should return count of chars wo spaces when add options", function () {
+      const mockedString = "Kadoraw Hello World";
+
+      assert.equal(howManyCharAtStr(mockedString, { ignoreSpaces: false }), 17);
     });
   });
 });
