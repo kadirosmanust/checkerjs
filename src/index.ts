@@ -6,5 +6,7 @@ import isAnyFrozen from "./Object/isAnyFrozen";
 import deepEquality from "./Object/deepEquality";
 // Number
 import isOdd from "./Number/isOdd";
+// String
+import howManyCharAtStr from "./String/howManyCharAtStr";
 
-export { isArray, isAnyNullorUndefined, isInRange, deepEquality, isAnyFrozen,isOdd };
+export { isArray, isAnyNullorUndefined, isInRange, deepEquality, isAnyFrozen,isOdd,howManyCharAtStr };
