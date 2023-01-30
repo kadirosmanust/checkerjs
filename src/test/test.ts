@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use strict";
 import assert = require("assert");
-import { isArray, isAnyNullorUndefined, isInRange, deepEquality, isOdd } from "../index";
+import { isArray, isAnyNullorUndefined, isInRange, deepEquality, isOdd, isAnyFrozen } from "../index";
 
 describe("Array", function () {
   describe("#isAnyNullOrUndefined()", function () {
@@ -97,6 +97,41 @@ describe("Number", function () {
       assert.equal(isOdd({}), undefined);
       // @ts-ignore
       assert.equal(isOdd(NaN), undefined);
+    });
+  });
+});
+
+describe("Object", function () {
+  describe("#isAnyKeyHasFreez()", function () {
+    it("should return false when there is no freez", function () {
+      const mockedObject = {
+        a: 1,
+        b: 2,
+        c: 3,
+      };
+      assert.equal(isAnyFrozen(mockedObject), false);
+    });
+
+    it("should return true when it is frozen.", function () {
+      const mockedObject = Object.freeze({
+        a: 1,
+        b: 2,
+        c: 3,
+      });
+      assert.equal(isAnyFrozen(mockedObject), true);
+    });
+
+    it("should return true when there is frozen one.", function () {
+      const mockedObject = {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: Object.freeze({
+          a: 1,
+        }),
+      };
+
+      assert.equal(isAnyFrozen(mockedObject), true);
     });
   });
 });
