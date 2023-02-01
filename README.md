@@ -1,3 +1,4 @@
+
 # checkerjs [![NPM version](https://img.shields.io/npm/v/checkerjs.svg?style=flat)](https://www.npmjs.com/package/checkerjs) [![NPM monthly downloads](https://img.shields.io/npm/dm/checkerjs.svg?style=flat)](https://www.npmjs.com/package/checkerjs) [![NPM total downloads](https://img.shields.io/npm/dt/checkerjs.svg?style=flat)](https://www.npmjs.com/package/checkerjs)
 
 > Check your data and validate your projects. Lightweight and easy to use data validation library for Node.js and the browser.
@@ -20,21 +21,29 @@ $ yarn add checkerjs
 
 ## Usage
 
-Works with datas.
 
+**String Validations**
+You can validate your string datas with checkerjs library. Check the examples;
 ```js
-import { isArray, isAnyNullorUndefined, isInRange,deepEquality } from 'checkerjs'
-
-const isUndef = isAnyNullorUndefined([1, 2, 3, 4, 5, 0, null]) // => true
-const isArr = isArray({}) // => false
-const isInRange = isInRange([4, 2, 6, 2, 8, 9],6,1,3) // => true
-//---------
+import { howManyCharAtStr } from 'checkerjs'
+const myStr = 'abccds'
+const charCounts = howManyCharAtStr(myStr, {ignoreSpaces: false, seperate: true})
+```
+`opt` Objects has two property. These are ignoreSpaces and seperate.
+```js
+ignoreSpace : boolean => It's ignore spaces.Default `true`.
+seperate : boolean => It's seperate datas and gives you an object. Default `false`
+```
+**Object Validations**
+You can validate your objects and checking datas.
+```js
+import { deepEquality , isAnyFrozen} from 'checkerjs'
 const a = {
-name:{
-	firstname: "kadir",
-	lastname: "osman"
-},
-age:23
+	name:{
+		firstname: "kadir",
+		lastname: "osman"
+		},
+	age:23
 }
 const b= {
 name:{
@@ -43,8 +52,51 @@ name:{
 },
 age:23
 }
-const isEqual = deepEquality(a,b) // => true
+const isEqual = deepEquality(a,b)
+//----------
+const exampleObject = Object.freeze({
+a: 1,
+b: 2,
+c: 3,
+});
+
+isAnyFrozen(exampleObject); => true
+
+const nestedObject = {
+a: 1,
+b: 2,
+c: 3,
+d: Object.freeze({
+	a: 1,
+	}),
+};
+
+isAnyFrozen(nestedObject); => true
 ```
+**Array Validations**
+You can validate your arrays and checking datas. Also you can use deepEquality for arrays.
+```js
+import { isArray, isAnyNullorUndefined, isInRange,deepEquality } from 'checkerjs'
+
+const isUndef = isAnyNullorUndefined([1, 2, 3, 4, 5, 0, null]) // => true
+const isArr = isArray({}) // => false
+const isInRange = isInRange([4, 2, 6, 2, 8, 9],6,1,3) // => true
+```
+**Number Validations**
+You can validate your numbers and checking datas.
+```js
+import {isOdd} from 'checkerjs'
+
+isOdd(1) => true
+isOdd(-5) =>true
+isOdd(2) => false
+isOdd(-6) => false
+isOdd(0) => false
+isOdd([]) => undefined
+isOdd({}) => undefined
+isOdd(NaN) => undefined
+```
+
 
 ## About
 
