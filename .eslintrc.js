@@ -12,5 +12,13 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["@typescript-eslint"],
-  rules: {},
+  rules: {
+    "no-duplicate-imports": "error",
+    "no-self-compare": "error",
+    "no-use-before-define": "error",
+    "camelcase": "warn",
+    "block-scoped-var": "warn",
+    "default-case": "error",
+    "eqeqeq": "error",
+  },
 };
