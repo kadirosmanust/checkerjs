@@ -1,7 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 "use strict";
 import assert = require("assert");
-import { isArray, isAnyNullorUndefined, isInRange, deepEquality, isOdd, isAnyFrozen, howManyCharAtStr } from "../index";
+import {
+  isArray,
+  isAnyNullorUndefined,
+  isInRange,
+  deepEquality,
+  isOdd,
+  isAnyFrozen,
+  howManyCharAtStr,
+  mustFind,
+} from "../index";
 
 describe("Array", function () {
   describe("#isAnyNullOrUndefined()", function () {
@@ -73,6 +82,30 @@ describe("Array", function () {
     });
     it("should return false when get equal numbers", () => {
       assert.equal(deepEquality(1, 1), true);
+    });
+  });
+
+  describe("#mustFind()", function () {
+    it("should return item when it is found", function () {
+      const exArray = [1, 2, 3, 4, 5, 6, 7, 8];
+      const item = mustFind<number>(exArray, item => item === 4);
+      assert.equal(item, 4);
+    });
+
+    it("should return item with Type when it is found", function () {
+      const exArray = [1, 2, 3, 4, 5, 6, 7, 8];
+      const item = mustFind<number>(exArray, item => item === 4);
+      assert.equal(typeof item, "number");
+    });
+
+    it("should return error when it is not found", function () {
+      const exArray = [1, 2, 3, 4, 5, 6, 7, 8];
+
+      try {
+        mustFind<number>(exArray, item => item === 9);
+      } catch (e) {
+        assert.equal(e.message, "Item not found");
+      }
     });
   });
 });
